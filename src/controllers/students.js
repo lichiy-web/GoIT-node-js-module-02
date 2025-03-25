@@ -49,5 +49,9 @@ export const deleteStudentController = async (req, res, next) => {
     return;
   }
 
-  res.status(204).send();
+  res.status(204).json({
+    status: 201,
+    message: `Successfully deleted a student!`,
+    data: student,
+  });
 };
