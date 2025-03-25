@@ -41,14 +41,13 @@ export const createStudentController = async (req, res, next) => {
 
 export const deleteStudentController = async (req, res, next) => {
   const { studentId } = req.params;
-  //   if (studentId.length !== 24) throw createHttpError(404, 'Student not found');
+  if (studentId.length !== 24) throw createHttpError(404, 'Student not found');
 
   const student = await deleteStudent(studentId);
   console.log(`deleteStudentController: student = `, student);
 
   if (!student) {
-    next(createHttpError(404, 'Student not found'));
-    return;
+    throw createHttpError(404, 'Student not found');
   }
 
   res.status(204).json({
@@ -84,8 +83,7 @@ export const patchStudentController = async (req, res, next) => {
   const result = await updateStudent(studentId, req.body);
 
   if (!result) {
-    next(createHttpError(404, 'Student not found'));
-    return;
+    throw createHttpError(404, 'Student not found');
   }
 
   res.json({
