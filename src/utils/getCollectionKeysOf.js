@@ -1,2 +1,1 @@
-export const getCollectionKeysOf = collection =>
-  Object.keys(collection.schema.tree).filter(key => key !== 'id');
+export const getCollectionKeysOf = schema => Object.keys(schema.paths);

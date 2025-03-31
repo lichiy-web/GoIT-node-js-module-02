@@ -1,4 +1,4 @@
-const parseNumber = (num, defaultNum) =>
+export const parseNumber = (num, defaultNum) =>
   (typeof num === 'string' && parseInt(num)) || defaultNum;
 
 export const parsePaginationParams = query => {

@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
-const studentsSchema = new Schema(
+export const studentsSchema = new Schema(
   {
     name: {
       type: String,

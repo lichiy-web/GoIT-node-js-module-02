@@ -8,17 +8,20 @@ import {
 } from '../services/students.js';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
-import { StudentsCollection } from '../db/models/student.js';
+import { studentsSchema } from '../db/models/student.js';
+import { parseFilterParams } from '../utils/parseFilterParams.js';
 
 export const getStudentsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
-  const { sortBy, sortOrder } = parseSortParams(req.query, StudentsCollection);
+  const { sortBy, sortOrder } = parseSortParams(req.query, studentsSchema);
+  const filter = parseFilterParams(req.query);
 
   const students = await getAllStudents({
     page,
     perPage,
     sortBy,
     sortOrder,
+    filter,
   });
 
   res.json({
