@@ -2,7 +2,7 @@ import express from 'express';
 import { pinoHttp } from 'pino-http';
 import cors from 'cors';
 import { getEnvVar } from './utils/getEnvVar.js';
-import studentsRouter from './routers/students.js';
+import router from './routers/index.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
@@ -30,7 +30,7 @@ export const startServer = () => {
     res.json({ availableRoutes: ['/', '/students', '/students/:studentId'] });
   });
 
-  app.use(studentsRouter);
+  app.use(router);
 
   app.use('*', notFoundHandler);
 

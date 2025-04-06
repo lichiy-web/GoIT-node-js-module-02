@@ -14,9 +14,9 @@ const parseParam = (param, value, schema, defaultValue) => {
 export const parseGender = gender =>
   parseParam('gender', gender, studentsSchema);
 
-console.log(`parseGender("male") = `, parseGender('123'));
+// console.log(`parseGender("male") = `, parseGender('123'));
 
-console.log('parseName = ', parseParam('name', 'Ivan', studentsSchema));
+// console.log('parseName = ', parseParam('name', 'Ivan', studentsSchema));
 
 export const parseFilterParams = query => {
   const { gender, maxAge, minAge, maxAvgMark, minAvgMark } = query;
