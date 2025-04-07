@@ -5,6 +5,7 @@ import { getEnvVar } from './utils/getEnvVar.js';
 import router from './routers/index.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 export const startServer = () => {
@@ -17,6 +18,7 @@ export const startServer = () => {
     }),
   );
   app.use(cors());
+  app.use(cookieParser());
 
   app.use(
     pinoHttp({
