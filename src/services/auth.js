@@ -22,8 +22,6 @@ export const loginUser = async credentials => {
   if (!user) {
     throw createHttpError(404, 'User not found');
   }
-  console.log('\n\n credentials.password = ', credentials.password);
-  console.log('user.password = ', user.password, '\n\n');
   const isEqual = await bcrypt.compare(credentials.password, user.password); // Порівнюємо хеші паролів
 
   if (!isEqual) {

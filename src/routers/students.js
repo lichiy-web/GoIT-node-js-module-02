@@ -18,6 +18,7 @@ import { authenticate } from '../middleware/authenticate.js';
 
 const router = new Router();
 router.use(authenticate);
+
 router.get('/', ctrlWrapper(getStudentsController));
 router.get('/:studentId', isValidId, ctrlWrapper(getStudentByIdController));
 router.post(

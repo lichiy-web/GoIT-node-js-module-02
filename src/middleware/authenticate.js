@@ -9,9 +9,6 @@ export const authenticate = async (req, res, next) => {
     next(createHttpError(401, 'Please provide Authorization header'));
     return;
   }
-
-  //   const bearer = authHeader.split(' ')[0];
-  //   const token = authHeader.split(' ')[1];
   const [bearer, token] = authHeader.split(' ');
 
   if (bearer !== 'Bearer' || !token) {
