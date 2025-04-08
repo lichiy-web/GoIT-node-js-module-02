@@ -8,10 +8,11 @@ export const initMongoDB = async () => {
     const url = getEnvVar('MONGODB_URL');
     const db = getEnvVar('MONGODB_DB');
 
-    await mongoose.connect(
-      `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`,
-    );
+    const mongoClusterURL = `mongodb+srv://${user}:${pwd}@${url}/${db}?retryWrites=true&w=majority`;
+
+    await mongoose.connect(mongoClusterURL);
     console.log('Mongo connection successfully established!');
+    // console.log(`MongoDB URL: ${mongoClusterURL}`);
   } catch (e) {
     console.log('Error while setting up mongo connection', e);
     throw e;

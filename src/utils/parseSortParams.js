@@ -8,11 +8,11 @@ const parseSortOrder = sortOrder =>
 const parseSortBy = (sortBy, schema) =>
   (getCollectionKeysOf(schema).includes(sortBy) && sortBy) || '_id';
 
-export const parseSortParams = (query, collection) => {
+export const parseSortParams = (query, schema) => {
   const { sortOrder, sortBy } = query;
 
   const parsedSortOrder = parseSortOrder(sortOrder);
-  const parsedSortBy = parseSortBy(sortBy, collection);
+  const parsedSortBy = parseSortBy(sortBy, schema);
 
   return {
     sortOrder: parsedSortOrder,
